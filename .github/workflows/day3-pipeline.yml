@@ -4,13 +4,10 @@ on:
   push:
 
 jobs:
-
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
@@ -19,7 +16,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install -r day3_pipeline/requirements.txt
+          pip install -r requirements.txt
           pip install pytest flake8
 
       - name: Run Linter
@@ -28,11 +25,9 @@ jobs:
 
       - name: Run pytest
         env:
-          PYTHONPATH: day3_pipeline
-        run: pytest day3_pipeline/test/test_pipeline.py
-
-
+          PYTHONPATH: .
+        run: pytest test_pipeline.py
 
       - name: Execute Pipeline
         run: |
-          python day3_pipeline/main.py
+          python main.py
