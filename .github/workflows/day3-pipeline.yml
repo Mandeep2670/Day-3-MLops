@@ -16,18 +16,18 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r day3_pipeline/requirements.txt
           pip install pytest flake8
 
       - name: Run Linter
         run: |
-          flake8 .
+          flake8 day3_pipeline
 
       - name: Run pytest
         env:
-          PYTHONPATH: .
-        run: pytest test_pipeline.py
+          PYTHONPATH: day3_pipeline
+        run: pytest day3_pipeline/test_pipeline.py
 
       - name: Execute Pipeline
         run: |
-          python main.py
+          python day3_pipeline/main.py
